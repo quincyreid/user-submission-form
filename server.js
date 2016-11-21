@@ -4,8 +4,14 @@
 
 const path = require('path')
 const express = require('express')
+const bodyParser = require('body-parser')
 const router = require('./lib/router')
 const app = express()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 app.set('views', path.join(__dirname, '/views'))
 app.engine('.html', require('ejs').__express)
